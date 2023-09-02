@@ -1,5 +1,5 @@
 type TopicType = {
-	_id: string;
-	title: string;
+	id: string;
+	name: string;
 	description: string;
 };

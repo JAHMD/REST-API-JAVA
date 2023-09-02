@@ -1,5 +1,5 @@
 export async function addTopic(newTopic: Partial<TopicType>) {
-	await fetch(`/api/topics`, {
+	await fetch(`http://localhost:8080/todos`, {
 		method: "POST",
 		headers: {
 			"content-type": "application/json",
@@ -12,8 +12,8 @@ export async function editTopic(
 	topicId: string,
 	updatedTopic: Partial<TopicType>
 ) {
-	await fetch(`/api/topics/${topicId}`, {
-		method: "PATCH",
+	await fetch(`http://localhost:8080/todos/${topicId}`, {
+		method: "PUT",
 		headers: {
 			"content-type": "application/json",
 		},
@@ -22,7 +22,7 @@ export async function editTopic(
 }
 
 export const getTopic = async (id: string) => {
-	const res = await fetch(`${process.env.BASE_URL}/api/topics/${id}`);
+	const res = await fetch(`http://localhost:8080/todos/${id}`);
 
 	if (!res.ok) {
 		throw new Error("Could not retrieve the topic.");
@@ -32,7 +32,7 @@ export const getTopic = async (id: string) => {
 };
 
 export const getTopics = async (): Promise<TopicType[]> => {
-	const res = await fetch(`${process.env.BASE_URL}/api/topics`);
+	const res = await fetch(`http://localhost:8080/todos`);
 
 	if (!res.ok) {
 		throw new Error("Could not retrieve the list of topics.");

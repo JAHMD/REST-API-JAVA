@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 const TopicsPage = async () => {
 	// function goes here
-	const topics: TopicType[] = [];
+	const topics: TopicType[] = await getTopics()
 
 	return (
 		<main className="container px-8 mx-auto flex flex-col gap-8 py-10">
@@ -22,16 +22,16 @@ const TopicsPage = async () => {
 			<div className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-4">
 				{topics.map((topic) => (
 					<article
-						key={topic._id}
+						key={topic.id}
 						className="p-4 border-2 border-white/10 rounded-xl flex flex-col gap-2"
 					>
-						<h2 className="font-medium text-lg">{topic.title}</h2>
+						<h2 className="font-medium text-lg">{topic.name}</h2>
 						<p className="text-gray-400 text-sm">{topic.description}</p>
 
 						<div className="flex gap-2 items-center justify-end mt-auto">
-							<Button id={topic._id} />
+							<Button id={topic.id} />
 							<Link
-								href={`/edit-topic/${topic._id}`}
+								href={`/edit-topic/${topic.id}`}
 								className="rounded-lg py-1.5 px-2.5 text-sm font-medium bg-white text-black hover:bg-gray-200 transition-colors"
 							>
 								Edit

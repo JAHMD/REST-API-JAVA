@@ -9,7 +9,7 @@ const Button = ({ id }: { id: string }) => {
 		const isConfirmed = confirm("Are you sure you want to delete this topic?");
 
 		if (isConfirmed) {
-			await fetch(`/api/topics?id=${id}`, {
+			await fetch(`http://localhost:8080/todos/${id}`, {
 				method: "DELETE",
 			});
 

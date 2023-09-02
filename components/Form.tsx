@@ -14,7 +14,7 @@ const Form = ({ type, currentTopic }: Props) => {
 
 	const intialTopicValue =
 		type === "create"
-			? { title: "", description: "" }
+			? { name: "", description: "" }
 			: (currentTopic as TopicType);
 
 	const [topic, setTopic] = useState<Partial<TopicType>>(intialTopicValue);
@@ -30,7 +30,7 @@ const Form = ({ type, currentTopic }: Props) => {
 			}
 
 			if (type === "edit") {
-				editTopic(currentTopic?._id!, topic);
+				editTopic(currentTopic?.id as string, topic);
 			}
 
 			setSubmitting(false);
@@ -56,17 +56,17 @@ const Form = ({ type, currentTopic }: Props) => {
 			className="flex-col flex gap-6 border-2 p-6 border-white/10 rounded-lg w-[500px] max-w-full"
 		>
 			<div className="flex flex-col gap-2">
-				<label htmlFor="title">Title</label>
+				<label htmlFor="name">Name</label>
 				<input
 					type="text"
-					name="title"
-					id="title"
+					name="name"
+					id="name"
 					placeholder="Enter a topic"
 					className="py-2 px-4 rounded-lg w-full text-black"
-					value={topic.title}
+					value={topic.name}
 					required={true}
 					onChange={(e) =>
-						setTopic((curr) => ({ ...curr, title: e.target.value }))
+						setTopic((curr) => ({ ...curr, name: e.target.value }))
 					}
 				/>
 			</div>

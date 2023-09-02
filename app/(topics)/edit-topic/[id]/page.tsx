@@ -18,13 +18,13 @@ export const generateStaticParams = async () => {
 	}
 
 	return topics.map((topic) => {
-		id: topic._id;
+		id: topic.id;
 	});
 };
 
 const EditTopic = async ({ params: { id } }: { params: { id: string } }) => {
-	const topic: TopicType = { _id: "", title: "", description: "" };
-	// const topic = await getTopic(id);
+	// const topic: TopicType = { id: "", name: "", description: "" };
+	const topic = await getTopic(id);
 
 	return (
 		<main className="main">
